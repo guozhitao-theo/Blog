@@ -35,3 +35,29 @@ twitter:
 google_plus:
 fb_admins:
 fb_app_id:
+
+# the Gitalk config，default disabled
+# Gitalk 评论模块的配置，默认为不激活
+gitalk:
+  enable: false
+  owner: guozhitao-theo
+  repo: guozhitao-theo.github.io
+  oauth:
+    clientId: 38588af0610d1e41cb46
+    clientSecret: 1c051dcc351246ff9703c385119e1684fe1dd187
+  admin:
+    - guozhitao
+
+# To use it, activate the configuration item and set appId and appKey.
+# Valine 评论模块的配置，默认为不激活，如要使用，就请激活该配置项，并设置 appId 和 appKey.
+valine:
+  enable: true
+  appId: hla1Nn0oG3oE1xMns5Ml3RKt-gzGzoHsz
+  appKey: Gzj6AR4Y3mVEJTEOc8WriBlI
+  notify: true
+  verify: false
+  visitor: true
+  avatar: 'mm' # Gravatar style : mm/identicon/monsterid/wavatar/retro/hide
+  pageSize: 10
+  placeholder: 'just go go' # Comment Box placeholder
+  background: /medias/comment_bg.png
