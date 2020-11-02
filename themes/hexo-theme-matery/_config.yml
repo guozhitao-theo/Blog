@@ -300,8 +300,8 @@ livere:
 # Valine 评论模块的配置，默认为不激活，如要使用，就请激活该配置项，并设置 appId 和 appKey.
 valine:
   enable: true
-  appId: hla1Nn0oG3oE1xMns5Ml3RKt-gzGzoHsz
-  appKey: Gzj6AR4Y3mVEJTEOc8WriBlI
+  appId: ABfcrVzeehpHlQ2SA2LRbzDQ-MdYXbMMI
+  appKey: oF3adnSXhM8mN2dIvPAExPu5
   notify: true
   verify: false
   visitor: true
