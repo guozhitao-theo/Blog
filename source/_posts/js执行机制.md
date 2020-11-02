@@ -3,6 +3,7 @@ title: js执行机制
 date: 2020-11-01 21:21:51
 author: 郭治涛
 tags: js
+keywords: js, js的运行机制, setTimeout, setInterval, 同步,  异步, 事件循环
 cover: true
 ---
 @[toc]
