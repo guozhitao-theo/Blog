@@ -527,7 +527,7 @@ addthis:
   pubid:  # 前往https://www.addthis.com/获取
 
 # 打字效果副标题.
-# 如果有符号 ‘ ，请在 ’ 前面加上 \
+# 如果有符号 ‘ ，请在 ’ 前面加上 
 subtitle:
   enable: true
   loop: true # 是否循环
