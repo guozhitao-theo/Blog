@@ -92,7 +92,7 @@ pagination_dir: page
 
 # Include / Exclude file(s)
 ## include:/exclude: options only apply to the 'source/' folder
-include:
+include: 
 exclude:
 ignore:
 
@@ -139,7 +139,7 @@ theme: hexo-theme-matery
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git
+  type:   
   # repo: https://gitee.com/guozhitao/blog0.git
   # branch: master
   repo: https://github.com/guozhitao-theo/guozhitao-theo.github.io.git
