@@ -139,7 +139,7 @@ theme: hexo-theme-matery
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type:   
+  type: git
   # repo: https://gitee.com/guozhitao/blog0.git
   # branch: master
   repo: https://github.com/guozhitao-theo/guozhitao-theo.github.io.git
