@@ -102,7 +102,148 @@ ls -i i: 文件的i节点
 
 ```
 
+#### 4.1.2 目录处理命令
 
+**mkdir**
+
+```shell
+mkdir /tmp/xiaodianying
+mkdir /tmp/japan/boduo // 无法创建需要加参数 -p
+mkdir -p /tmp/japan/boduo // 递归创建
+mkdir /tmp/japan/cangjin /temp/japan/longze/  // 同时创建多个目录
+```
+
+**cd**(change directory)
+
+```sh
+cd 目录名称
+
+```
+
+**pwd**(print working directory)
+
+```shell
+pwd // 显示完整目录
+```
+
+**.** 表示当前目录
+
+**..** 表示当前目录的上级目录
+
+**rmdir** (remove empty directory) 删除空目录
+
+```shell
+rmdir 目录名
+```
+
+**cp** (copy) 复制
+
+```shell
+cp -rp [原文件或目录] [原文件目录] ... [目标目录]
+   -r 复制目录 可以更改文件名
+   -p 保留文件属性
+```
+
+**mv**(move) 剪切、改名
+
+```shell
+mv [原文件或目录] [目标目录]
+```
+
+**rm**(remove) 删除文件或目录
+
+```shell
+rm -rf [文件或目录]
+   -r 删除目录
+   -f 强制删除
+```
+
+
+
+#### 4.1.3 文件处理命令
+
+**touch** 创建空文件
+
+```shell
+touch [文件名]
+```
+
+**cat**显示文件内容
+
+```shell
+cat [文件名]
+cat -n [文件名] // 查看文件内容 带行号
+cat 
+```
+
+**tac** 与cat一直  反向显示命令 不支持-n
+
+**more** 分页显示文件内容
+
+```shell
+more [文件名]
+（空格）或f  翻页
+（enter）   换行
+  q或Q	   退出
+```
+
+**less 分页显示内容**
+
+```shell
+于more一样但是多了以下命令
+b 向上翻页
+上箭头 向上找
+/搜索内容   ; n next 下一条 p preview 上一条
+```
+
+**head** 显示文件前面几行
+
+```shell
+head [文件名]
+-n 指定行数
+```
+
+**tail**显示末尾几行
+
+```shell
+tail [文件名]
+-n 指定行数
+-f 动态显示
+```
+
+#### 4.1.4 链接命令
+
+**ln**(link) 生成链接文件
+
+```shell
+ln -s [原文件] [目标文件]
+   -s 创建软连接（类似windows快捷方式）
+ln [原文件] [目标文件] // 相当于拷贝cp -p + 同步更新，原文件丢失硬链接也能访问；查看i节点，一个i节点可对应多个文件；不能跨分区；不能针对目录使用
+```
+
+### 4.2 权限管理命令
+
+#### 4.2.1 权限管理命令chmod
+
+**chmod** (change the permissions mode of a file) 改变文件或目录的权限
+
+```shell
+chmod [{ugoa}{+-=}{rwx}] [文件或目录]
+	//[{所有者，用户组，其他人，所有人}{增加权限，减少权限，重写权限}{读，写，执行}]
+	  [mode=421] [文件或者目录]
+	  -R 递归修改
+```
+
+```shell
+file:
+	r: cat/more/head/tail/less
+	w: vim
+	x: script command
+directory
+	r: ls
+	w: touch/mkdir/rmdir/rm
+	x: cd
+```
 
 
 
