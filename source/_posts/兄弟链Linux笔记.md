@@ -703,3 +703,262 @@ vi /root/.vimrc // 保存编辑模式的命令
 	* 经过编译，不再可以看到源码
 	* 功能选择不如源码灵活
 	* 依赖性
+#### 6.2 RPM包管理命令 - rpm命令管理
+
+##### 6.2.1 RPM 包命名与依赖性
+
+```shell
+httpd-2.2.15-15.el6.centos.l.i686.rpm
+httpd  			软件包名
+2.2.15 			软件版本
+15 	  			软件发布次数
+el6.centos  	适合Linux平台
+i686    		适合的硬件平台
+rpm    			rpm扩展名
+```
+
+**RPM包依赖性**
+
+* 树形依赖
+
+  a->b->c
+
+* 环形依赖
+
+  a->b->c->a
+
+* 模块依赖
+
+  www.rpmfind.net
+
+
+
+##### 6.2.2 rpm命令管理-安装升级与卸载
+
+1. 包全名与包名
+
+   * 包全名：
+
+     操作的包是没有安装的软件包时，使用包全名。而且要注意路径
+
+   * 包名：
+
+     操作已经安装的软件包时，使用包名。是搜索/var/lib/rpm/中的数据库
+
+2. rpm安装
+
+   ```shell
+   rpm -ivh 包全名
+   选项：
+   	-i (install)			安装
+   	-v (verbose) 			显示详细信息
+   	-h (hash)				显示进度
+   	--nodeps				不检测依赖性 
+   	
+   ```
+
+3. RPM包升级
+
+   ```shell
+   rpm -Uvh 包全名
+   选项：
+   	-U (upgrade) 		升级
+   ```
+
+   
+
+4. 卸载
+
+   ```shell
+   rpm -e 包名
+   选项：
+   	-e (erase) 		卸载
+   	--nodepe		不检测依赖性 
+   ```
+
+   
+
+##### 6.2.3 rpm命令管理-查询
+
+1. 查询是否安装
+
+   ```shell
+   rpm - q 包名
+   # 查询包是否安装
+   选项： 
+   	-q 查询（query）
+   
+   rpm -qa
+   # 查询所有已经安装的RPM包
+   选项：
+   	-a 所有 （all）
+   ```
+
+   
+
+2. 查询软件包信息
+
+   ```shell
+   rpm -qi 包名
+   选项：
+   	-i 查询软件信息 （information）
+   	-p 查询未安装包信息（package） 
+   ```
+
+3. 查询包中文件的安装位置
+
+   ```shell
+   rpm -ql 包名
+   选项： 
+   	-l 列表（list）
+   	-p 查询未安装包信息（package）
+   ```
+
+4. 查询系统文件属于哪一个RPM包
+
+   ```shell
+   rpm -qf 系统文件名
+   选项： 
+   	-f 查询系统文件属于哪个软件包（file）
+   ```
+
+5. 查询软件包的依赖性
+
+   ```shell
+   -R 查询软件包的依赖性（requires）
+   -p 查询未安装包信息 (package) 
+   ```
+
+   
+
+##### 6.2.4 rpm命令管理-校验和文件提取
+
+1. RPM 包校验
+
+   ```shell
+   rpm -V 已安装的包名
+   选项：
+   	-V 校验指定RPM包中的文件（verify）
+   ```
+
+   验证内容中的8个信息内容如下：
+
+   	* S	文件大小是否改变
+   	* M 文件的类型或文件的权限（rwx）是否被改变
+   	* 5 文件MD5校验和是否改变（可以看成文件内容是否改变）
+   	* D 设备的中，从代码是否改变
+   	* L 文件的路径是否改变
+   	* U 文件的属性（所有者）是否改变
+   	* G 文件的属组是否改变
+   	* T 文件的修改时间是否改变
+
+ **文件类型**
+
+    ```shell
+    * c 	配置文件（config file）
+    * d     普通文件（documentation）
+    * g 	"鬼"文件（ghost file）, 很少见，，就是该文件不应该被这个RPM包包含
+    * l		授权文件（license file）
+    * r		描述文件（read me）
+    ```
+
+2. ROM包中文件提取
+
+   ```shell
+   rpm2cpio 包全名 | \
+   cpio -idv .文件绝对路径
+   
+   rpm2cpio
+   #将rpm包转换为cpio格式命令
+   cpio
+   #是一个标准工具，它用于创建软件档案文件和从档案文件中提取文件
+   ```
+
+   
+
+   
+
+#### 6.3RPM包 yum在线管理
+
+##### 6.3.1IP地址配置个网络yum 源
+
+```shell
+setup
+vi /etc/sysconfig/network-scripts/ifcfg-eth0  
+# 把ONBOOT="no"改为ONBOOT=“yse"
+# 或者
+service network restart
+```
+
+网络源
+
+```shell
+vi /etc/yum.repos.d/CentOS-Base.repo
+ * [base]			容器名称，一定要放在[]中
+ * name				软件说明，可以自己随便写
+ * mirrorlist		镜像站点，这个可以注释掉
+ * baseurl			我们的yum源服务器的地址。默认是CentOS官方的yum源服务器，是可以使用的，如果你觉得慢可以改成你喜欢的yum源地址
+ * enabled			此容器是否生效，如果不写或者写成enable=1都是生效，写成enable=0就是不生效
+ * gpgcheck			如果是1是指RPM的数字证书生效，如果是0则不生效
+ * gpgkey			数字证书公钥文件保存位置，不用修改
+```
+
+##### 6.3.2 yum命令
+
+1. 常用命令
+
+   * 查询
+
+   ```shell
+   
+   yum list
+   # 查询所有可用软件包列表
+   yum search 关键字
+   # 搜索服务器上所有和关键字相关的包
+   
+   
+   ```
+
+   * 安装
+
+   ```shell
+   yum -y install 包名
+   选项：
+   	install	   安装
+   	-y		   自动回答yes
+   ```
+
+   * 升级
+
+   ```shell
+   yum -y update 包名
+   选项：
+   	update		升级
+   	-y			自动回答yes
+   ```
+
+   * 卸载
+
+   ```shell
+   yum -y remove 包名
+   选项：
+   	remove		卸载
+   	-y			自动回答yes
+   ```
+
+   
+
+2. YUM 软件组管理命令
+
+   ```shell
+   yum grouplist
+   # 列出所有可用的软件组列表
+   
+   yum groupinstall 软件组名
+   # 安装指定软件组，组名可以由grouplist查询出来
+   
+   yum groupremove 软件组名
+   # 卸载指定软件组
+   ```
+
+   
