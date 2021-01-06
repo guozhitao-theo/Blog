@@ -961,4 +961,108 @@ vi /etc/yum.repos.d/CentOS-Base.repo
    # 卸载指定软件组
    ```
 
-   
+##### 6.3.3 yum在线管理-光盘yum源
+
+1. 挂载光盘
+
+   ```shell
+   mount /dev/cdrom /mnt/cdrom
+   ```
+
+2. 让网络yum源文件失效
+
+   ```SHELL
+   cd /etc/yum.repos.d/
+   mv CentOs-Base.repo \ CentOS-Base.repo.bak
+   mv CentOS-Debuginfo.repo \ CentOS-Debuginfo.repo.bak
+   mv CentOS-Vault.repo \ CentOS-Vault.repo.bak
+   ```
+
+3. 修改光盘yum源
+
+   ```shell
+   vim CentOS-Media.repo 
+   	[c6-media] 
+   	nme = CentOS-$releasever - Media
+   	baseurl=file:///mnt/cdrom
+   	# 地址为你自己的光盘挂载地址
+   	# file:///media/cdrom
+   	# file:///media/cdrecorder
+   	# 注释这两个不存在的地址
+   	gpgcheck=1
+   	enabled=1
+   	# 把enable=0改为enable=1，让这个yum源配置文件生效
+   	gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+   ```
+
+#### 6.4 源码包与RPM包的区别
+
+##### 6.4.1 源码包与RPM包的区别
+
+1. 区别
+
+   * 安装前的区别： 概念上的区别
+   * 安装后的区别： 安装位置不同
+
+2. RPM包安装位置
+
+   **RPM包默认安装路径**
+
+   | /etc/           | 配置文件安装目录           |
+   | --------------- | -------------------------- |
+   | /usr/bin/       | 可执行的命令安装目录       |
+   | /usr/lib/       | 程序所使用的函数库保存位置 |
+   | /usr/share/doc/ | 基本的软件使用手册保存位置 |
+   | /usr/share/man/ | 帮助文件保存位置           |
+
+3. 源码包安装位置
+
+   * 安装在指定位置当中，一般是/usr/local/软件名/
+
+4. 安装位置不同带来的影响
+
+   * RPM包安装的服务可以使用系统服务管理命令（service）来管理，例如RPM包安装的apache的启动方法是
+     * /etc/rc.d/init.d/httpd start
+     * service httpd start
+   * 而源码包安装的服务则不能被服务管理命令管理，因为没有安装到默认路径中，所以只能用绝对路径进行服务管理，如：
+     * /usr/local/apache2/bin/apachectl start
+
+##### 6.4.2 源码包管理
+
+1. 安装准备
+   * 安装C语言编译器
+   * 下载源码包
+2. 安装注意事项
+   * 源代码保存位置： /usr/local/src/
+   * 软件安装位置：/usr/local/
+   * 如何确认安装过程报错：
+     * 安装过程停止
+     * 并出现error、warning或no的提示
+3. 源码包安装过程
+   * 下载源码包
+   * 解压缩下载的源码包
+   * 进入解压缩目录
+   * ./configure 软件配置与检查(--prefix=指定路径)
+     * 定义需要的功能选项
+     * 检测系统环境是否符合安装要求
+     * 把定义好的功能选项和检测系统环境的信息都写入Makefile文件，用于后续的编辑。
+   * make 编译
+     * (若make 报错)make clean
+   * make install 编译安装
+
+4. 源码包的卸载
+   * 不需要卸载命令，直接删除安装目录即可。不会遗留任何垃圾文件。
+
+#### 6.5 脚本安装包
+
+1. 脚本安装包
+   * 脚本安装包并不是独立的软件包类型，常见安装的是源码包
+   * 是人为把安装过程写成了自动安装的脚本，只要执行脚本，定义简单的参数，就可以完成安装。
+   * 非常类似于Windows下软件的安装方式。
+2. Webmin的作用
+   * Webmin 是一个基于Web的Linux系统管理界面。您就可以通过图形化的方式设置用户账号、Apache、DNS、文件共享等服务。
+
+3. Webmin安装过程
+   * 下载软件
+   * 解压缩，并进入解压缩目录
+   * 执行安装脚本   
