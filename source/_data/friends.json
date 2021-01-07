@@ -1,25 +1,30 @@
-[{
-  "avatar": "https://cdn.jsdelivr.net/gh/GATING/blog_imgs@master/blog/avatar.png",
-  "name": "磨蹭先生",
-  "introduction": "Never put off till tomorrow what you can do ",
-  "url": "https://gatings.cn/",
-  "title": "前去学习"
-}, {
-  "avatar": "https://cdn.JsDelivr.net/gh/guozhitao-theo/bolg_img/2020-11-01/QQ图片20201102212553.jpg",
-  "name": "陈糠杰",
-  "introduction": "忠于@宝宝。",
-  "url": "http://120.79.186.106:8080/blog/",
-  "title": "前去学习"
-},{
-  "avatar": "http://image.luokangyuan.com/4027734.jpeg",
-  "name": "闪烁之狐",
-  "introduction": "编程界大佬，技术牛，人还特别好，不懂的都可以请教大佬",
-  "url": "https://blinkfox.github.io/",
-  "title": "前去学习"
-}, {
-  "avatar": "http://image.luokangyuan.com/avatar.jpg",
-  "name": "ja_rome",
-  "introduction": "平凡的脚步也可以走出伟大的行程",
-  "url": "ttps://me.csdn.net/jlh912008548",
-  "title": "前去学习"
-}]
+[
+  {
+    "avatar": "https://cdn.jsdelivr.net/gh/GATING/blog_imgs@master/blog/avatar.png",
+    "name": "磨蹭先生",
+    "introduction": "Never put off till tomorrow what you can do ",
+    "url": "https://gatings.cn/",
+    "title": "前去学习"
+  },
+  {
+    "avatar": "https://cdn.JsDelivr.net/gh/guozhitao-theo/bolg_img/2020-11-01/QQ图片20201102212553.jpg",
+    "name": "陈糠杰",
+    "introduction": "忠于@宝宝。",
+    "url": "http://it.ckjblog.com/#/dashboard",
+    "title": "前去学习"
+  },
+  {
+    "avatar": "http://image.luokangyuan.com/4027734.jpeg",
+    "name": "闪烁之狐",
+    "introduction": "编程界大佬，技术牛，人还特别好，不懂的都可以请教大佬",
+    "url": "https://blinkfox.github.io/",
+    "title": "前去学习"
+  },
+  {
+    "avatar": "http://image.luokangyuan.com/avatar.jpg",
+    "name": "ja_rome",
+    "introduction": "平凡的脚步也可以走出伟大的行程",
+    "url": "ttps://me.csdn.net/jlh912008548",
+    "title": "前去学习"
+  }
+]
