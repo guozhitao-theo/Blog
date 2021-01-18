@@ -1139,3 +1139,66 @@ vi /etc/yum.repos.d/CentOS-Base.repo
    * 第2个字段： 组密码
    * 第3个字段： 组管理员用户名
    * 第4个字段： 组中附加用户  
+
+### 7.2 用户管理相关文件
+
+#### 7.2.1
+
+1. 用户的家目录
+   * 普通用户：/home/用户名/, 所有者和所属组都是此用户，权限是7008
+   * 超级用户： /root/, 所有者和所属组都是root用户，权限是550
+2. 用户的邮箱
+   * /var/spool/mail/用户名/
+3. 用户模板目录
+   * /etc/skel
+
+### 7.3 用户的管理命令
+
+#### 7.3.1 用户管理命令 useradd
+
+```shell
+useradd[选项]用户名
+选项： 
+-u UID: 手工指定用户的UID号
+-d 家目录: 手工指定用户的家目录
+-c 用户说明: 手工指定用户的说明
+-g 组名： 手工指定用户的初始组
+-G 组名： 指定用户的附加组
+-s shell: 手工指定用户的登陆shell。默认是/bin/bash
+```
+
+2. 添加默认用户
+
+```shell
+useradd sc
+* grep sc/etc/passwd
+* grep sc/etc/shadow
+* grep sc/etc/group
+* grep sc/etc/gshadow
+* ll -d /home/lamp/
+* ll /var/spool/mail/lamp
+```
+
+3. 指定选项添加用户
+
+* useradd -u 550 -G -root, bin -d /home/lamp1 \ -c "test user" -s /bin/bash sc
+
+4. 用户默认值文件
+
+    * /etc/default/useradd
+      	* GROUP=100		#用户默认组
+      	* HOME=/home     #用户家目录
+      	* INACTIVE=-1        # 密码过期宽限天数(shadow文件7字段)
+      	* EXPIRE=                # 密码失效时间（8）
+      	* SHELL=/bin/bash # 默认shell
+      	* SKEL=/etc/skel     #模板目录
+      	* CREATE_MAIL_SPOOL=yes #师傅建立邮箱
+
+   * /etc/login.defs
+     * PASS_MAX_DAYS 99999   #密码有效期（5）
+     * PASS_MIN_DAYS 0 #密码修改间隔（4）
+     * PASS_MIN_LEN 5   #密码最小5位（PAM）
+     * PASS_WARN_AGE 7 # 密码到期警告（6）
+     * UID_MIN 500 #最小和最大UID范围
+     * GID_MAX  6000
+     * ENCRYPT_METHOD  SHA512  #加密模式
