@@ -1202,3 +1202,25 @@ useradd sc
      * UID_MIN 500 #最小和最大UID范围
      * GID_MAX  6000
      * ENCRYPT_METHOD  SHA512  #加密模式
+
+
+
+
+
+#### 7.3.2 passwd 命令
+
+passwd [选项] 用户名
+
+选项： 
+
+ ```shell
+-S  #查询用户密码的密码状态。仅root用户可以使用
+-l  #暂时锁定用户。仅root 用户可以使用
+-u  #解锁用户。仅root用户可用
+--stdin	#可以通过管带符输出的数据作为用户的密码
+
+
+ ```
+
+
+
