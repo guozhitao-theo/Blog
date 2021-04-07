@@ -1,12 +1,17 @@
 ---
 title: webpack
 date: 2021-03-31 07:52:03
-tags:
+tags: webpack
+keywords: webpack|loader|plugins
+categories: 笔记
+cover: true
 ---
 
 [toc]
 
 # webpack
+
+[项目地址](https://gitee.com/guozhitao/webpack-study)
 
 ## webpack 基础配置
 
@@ -68,10 +73,24 @@ tags:
    * expose-loader 暴露全局的loader, 内联的loader。示例：`import $ from "expose-loader?exposes=$,jQuery!jquery"; // 把jquery暴露成$和jQuery`
    * 或者配到配置文件里面
      	* pre 前面执行的loader
-     	* normal 普通的loader
-     	* 内联loader
+        	* normal 普通的loader
+        	* 内联loader
      	* 后置 postloader
   	* webpack.ProvidePlugin({$:"jquery"}) 在每个模块中都注入\$符号
-  
   * 模板文件直接引入cdn
   * externals 不需要打包
+  
+  ### webpack 打包图片
+  
+  * 在js中创建图片来引入
+  * 在css中引入 background（“url”）
+  * \<img src="url" / >
+  * file-loader 默认在内部生成一些文件在build目录下，把生成的文件的名字（路径）返回
+  * html-withimg-loader 解析html编译img（这个loader 会与file-loader 、url-loader冲突(生成的是defalut对象) 需要在file-loader 设置 options->esModule: false）
+  * url-loader 可以做限制，当图片小于多少k的时候 用base64转化 否则用file-loader 产生真实的文件
+  
+  ### 打包分类
+  
+   filename 加个上级目录 
+  
+  cdn 加个publicPath 
