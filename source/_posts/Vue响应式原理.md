@@ -1,7 +1,9 @@
 ---
 title: Vue响应式原理
 date: 2022-03-02 22:28:35
-tags:
+tags: javascript基础
+keywords: Vue3
+categories: 笔记
 ---
 # VUE 响应式原理
 

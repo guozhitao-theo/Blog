@@ -1,7 +1,9 @@
 ---
 title: javascript设计模式
 date: 2022-03-02 22:26:48
-tags:
+tags: javascript基础
+keywords: 设计模式
+categories: 笔记
 ---
 # javascript 设计模式
 

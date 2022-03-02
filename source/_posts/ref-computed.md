@@ -1,7 +1,9 @@
 ---
 title: 'ref,computed'
 date: 2022-03-02 22:27:44
-tags:
+tags: javascript基础
+keywords: Vue3
+categories: 笔记
 ---
 ## ref 函数
 

@@ -2,7 +2,9 @@
 layout: javascript
 title: 执行机制
 date: 2022-03-02 22:22:34
-tags:
+tags: javascript基础
+keywords: 执行上下文
+categories: 笔记
 ---
 # JavaScript 执行机制
 

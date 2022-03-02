@@ -1,7 +1,9 @@
 ---
 title: 从输入URL到页面展示发生了什么
 date: 2022-03-02 22:25:04
-tags:
+tags: javascript基础
+keywords: 浏览器
+categories: 笔记
 ---
 # 从输入URL到页面展示，这中间发生了什么？- 导航&渲染
 
