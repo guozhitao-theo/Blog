@@ -142,5 +142,5 @@ deploy:
   type: git
   # repo: https://gitee.com/guozhitao/blog0.git
   # branch: master
-  repo: https://github.com/guozhitao-theo/guozhitao-theo.github.io.git
+  repo: git@github.com:guozhitao-theo/guozhitao-theo.github.io.git
   branch: main
